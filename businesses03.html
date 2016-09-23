@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="msapplication-tap-highlight" content="no">
+	    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+	    <link rel="stylesheet" type="text/css" href="css/common.css">
+	    <link rel="stylesheet" type="text/css" href="css/index.css">
+	    <title>商户信息维护</title>
+	</head>
+	<body>
+		<div id="left" class="fl">
+			<div class="container">
+				<div class="personal">
+					<img src="images/avatar.png" title="" alt="头像" width="86" height="86"/>
+					<p>王丽莉admin</p>
+				</div>
+				<ul class="banner">
+					<li class="one">
+						<span class="icon01"></span>
+						<em>用户管理</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">用户信息维护</li>
+						<li>用户账户维护</li>
+						<li>用户手续费维护</li>
+					</ul>
+					<li class="one">
+						<span class="icon02"></span>
+						<em>商户管理</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">商户开户</li>
+						<li>商户认证审核</li>
+						<li>商户信息维护</li>
+						<li>商户账户维护</li>
+					</ul>
+					<li class="one">
+						<span class="icon03"></span>
+						<em>订单管理</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">商品订单查询</li>
+						<li>充值订单查询</li>
+						<li>提现订单查询</li>
+						<li>退款订单查询</li>
+						<li>转账订单查询</li>
+						<li>红包订单查询</li>
+					</ul>
+					<li class="one">
+						<span class="icon04"></span>
+						<em>短信/邮件</em>
+						<span class="arrow hover"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">短信发送日志</li>
+						<li>邮件发送日志</li>
+					</ul>
+					<li class="one">
+						<span class="icon05"></span>
+						<em>报表中心</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">商户每日交易表</li>
+						<li>商户每月交易表</li>
+						<li>用户每日交易表</li>
+						<li>用户每月交易表</li>
+						<li>商户交易结算表</li>
+					</ul>
+				</ul>
+			</div>
+		</div>
+	    <div id="right" class="fr">
+	    	<div class="container">
+		    	<div id="top">
+		    		<div class="fl">
+		    			<a href="#">
+		    				<span class="icon"></span>
+		    				<em>首页</em>
+		    			</a>
+		    		</div>
+		    		<div class="fr">
+		    			<em>上次登录时间：2016-04-06&nbsp;&nbsp;&nbsp;&nbsp;登录次数  6</em>
+		    			<a href="#" class="blue-bg">修改密码</a>
+		    			<a href="javascript:void(0);" class="red-bg">退出</a>
+		    		</div>
+		    	</div>
+		    	<div id="main">
+		    		<div class="search-wrap">
+		    			<p class="title">商户信息维护</p>
+		    			<p>
+		    				<span>商户编号：</span>
+		    				<input name="" type="text" value=""/>
+		    				<span>商户名称：</span>
+		    				<input name="" type="text" value=""/>
+		    				<span>商户类型：</span>
+		    				<select name="" class="big-input">
+	                            <option value="">请选择</option>
+	                            <option value="">选项1</option>
+	                            <option value="">选项1</option>
+	                        </select>
+		    			</p>
+		    			<p>
+		    				<span>注册日期：</span>
+		    				<input name="" type="text" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd ',readOnly:true})"/>
+		    				<span>到</span>
+		    				<input name="" type="text" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd ',readOnly:true})"/>
+		    			</p>
+		    			<p>
+		    				<span>商户状态：</span>
+		    				<select name="">
+	                            <option value="">请选择</option>
+	                            <option value="">选项1</option>
+	                            <option value="">选项1</option>
+	                        </select>
+		    				<input type="submit" value="查 询" class="sub-btn"/>
+		    			</p>
+		    		</div>
+		    		<div class="line-14"></div>
+		    		<div class="table-wrap">
+		    			<table cellspacing="0" cellpadding="0">
+		                  <tr>
+		                    <th class="border-left">商户编号</th>
+		                    <th>商户名称</th>
+		                    <th>营业执照注册号</th>
+		                    <th>法人/经营者姓名</th>
+		                    <th>商户状态</th>
+		                    <th>注册时间</th>
+		                    <th class="border-right">操作</th>
+		                  </tr>
+		                  <tr>
+		                    <td class="border-left">002758MF</td>
+		                    <td>阿斯达斯</td>
+		                    <td>422****4342</td>
+		                    <td>陈小宝</td>
+		                    <td>未认证 </td>
+		                    <td>2016/05/15</td>
+		                    <td class="border-right"><em class="blue-btn">详情</em><em class="blue-btn">修改</em><em class="blue-btn">密码解锁</em><em class="blue-btn">密码重置</em><em class="blue-btn">注销</em><em class="blue-btn">结算设置</em></td>
+		                  </tr>
+		                </table>
+		                <div class="page">
+		                	<ul class="fr">
+			                    <li><a href="#">上一页</a></li>
+			                    <li class="hover"><a href="#">1</a></li>
+			                    <li><a href="#">2</a></li>
+			                    <li><a href="#">......</a></li>
+			                    <li><a href="#">4</a></li>
+			                    <li><a href="#">5</a></li>
+			                    <li><a href="#">下一页</a></li>
+			                </ul>
+			                <div class="fr">共  1 页，当前第 1 页</div>
+		                </div>
+		    		</div>
+		    	</div>
+		    </div>
+	    </div>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			// 侧边栏导航
+			$(".banner .one").on("click",function(){
+				$(this).toggleClass("hover");
+				if($(this).next(".two-banner").is(":visible")){
+					$(this).next(".two-banner").slideUp();
+				}else{
+					$(this).next(".two-banner").siblings(".two-banner").slideUp();
+					$(this).siblings(".banner .one").removeClass("hover");
+					$(this).next(".two-banner").slideDown();
+				}
+			})
+
+		})
+		</script>
+	</body>
+</html>

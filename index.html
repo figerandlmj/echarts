@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8">
+	    <meta name="format-detection" content="telephone=no">
+	    <meta name="msapplication-tap-highlight" content="no">
+	    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+	    <link rel="stylesheet" type="text/css" href="css/common.css">
+	    <link rel="stylesheet" type="text/css" href="css/index.css">
+	    <title>首页</title>
+	</head>
+	<body>
+		<div id="left" class="fl">
+			<div class="container">
+				<div class="personal">
+					<img src="images/avatar.png" title="" alt="头像" width="86" height="86"/>
+					<p>王丽莉admin</p>
+				</div>
+				<ul class="banner">
+					<li class="one">
+						<span class="icon01"></span>
+						<em>用户管理</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">用户信息维护</li>
+						<li>用户账户维护</li>
+						<li>用户手续费维护</li>
+					</ul>
+					<li class="one">
+						<span class="icon02"></span>
+						<em>商户管理</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">商户开户</li>
+						<li>商户认证审核</li>
+						<li>商户信息维护</li>
+						<li>商户账户维护</li>
+					</ul>
+					<li class="one">
+						<span class="icon03"></span>
+						<em>订单管理</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">商品订单查询</li>
+						<li>充值订单查询</li>
+						<li>提现订单查询</li>
+						<li>退款订单查询</li>
+						<li>转账订单查询</li>
+						<li>红包订单查询</li>
+					</ul>
+					<li class="one">
+						<span class="icon04"></span>
+						<em>短信/邮件</em>
+						<span class="arrow hover"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">短信发送日志</li>
+						<li>邮件发送日志</li>
+					</ul>
+					<li class="one">
+						<span class="icon05"></span>
+						<em>报表中心</em>
+						<span class="arrow"></span>
+					</li>
+					<ul class="two-banner">
+						<li class="hover">商户每日交易表</li>
+						<li>商户每月交易表</li>
+						<li>用户每日交易表</li>
+						<li>用户每月交易表</li>
+						<li>商户交易结算表</li>
+					</ul>
+				</ul>
+			</div>
+		</div>
+	    <div id="right" class="fr">
+	    	<div class="container">
+		    	<div id="top">
+		    		<div class="fl">
+		    			<a href="#">
+		    				<span class="icon"></span>
+		    				<em>首页</em>
+		    			</a>
+		    		</div>
+		    		<div class="fr">
+		    			<em>上次登录时间：2016-04-06&nbsp;&nbsp;&nbsp;&nbsp;登录次数  6</em>
+		    			<a href="#" class="blue-bg">修改密码</a>
+		    			<a href="javascript:void(0);" class="red-bg">退出</a>
+		    		</div>
+		    	</div>
+		    	<div id="main" style="position:relative;">
+		    		<div class="title">
+		    			<span></span>
+		    			<em>四川省APP注册量</em>
+		    		</div>
+		    		<!-- 地图 -->
+		    		<div id="echarts" style="margin-left:200px;"></div>
+		    		<!-- 其他 -->
+		    		<div class="map01" style="position:absolute;left:40px;top:120px;z-index:999;">
+		    			<img src="images/map01.png" title="" alt="" width="231" height="255"/>
+		    			<span style="font-size:14px;color:#000;position:absolute;left:40px;top:120px;">外省</span>
+		    		</div>
+		    		<div class="map02" style="position:absolute;left:100px;top:400px;z-index:999;">
+		    			<img src="images/map01.png" title="" alt="" width="231" height="255"/>
+		    			<span style="font-size:14px;color:#000;position:absolute;left:40px;top:120px;">未知</span>
+		    		</div>
+		    		<!-- 数据显示 -->
+		    		<div style="position:absolute;left:140px;top:120px;width:260px;height:154px;background:#000;opacity:0.58;padding:10px;color:#fff;border-radius:4px;z-index:9999;display:none;" class="map01-data">外省<br/>
+		    			<div style="margin-top:10px;">
+		    				注册用户： 100  / 1000<br/>
+		    				注册商户：200 / 2000<br/>
+		    				消费订单（笔）： 300 / 3000<br/>
+		    				<p style="padding:4px 0px;margin-bottom:4px;border-bottom:1px solid #aaa;"></p>
+		    				消费总金额（元）： 
+		    				<em style="color:#fbf809;"> 6000</em><br/>
+		    				历史总金额（元）：
+		    				<em style="color:#fbf809;" >70000</em>
+		    			</div>
+		    		</div>
+		    		<div style="position:absolute;left:160px;top:400px;width:260px;height:154px;background:#000;opacity:0.58;padding:10px;color:#fff;border-radius:4px;z-index:9999;display:none;" class="map02-data">外省<br/>
+		    			<div style="margin-top:10px;">
+		    				注册用户： 100  / 1000<br/>
+		    				注册商户：200 / 2000<br/>
+		    				消费订单（笔）： 300 / 3000<br/>
+		    				<p style="padding:4px 0px;margin-bottom:4px;border-bottom:1px solid #aaa;"></p>
+		    				消费总金额（元）： 
+		    				<em style="color:#fbf809;"> 6000</em><br/>
+		    				历史总金额（元）：
+		    				<em style="color:#fbf809;" >70000</em>
+		    			</div>
+		    		</div>
+
+		    	</div>
+		    </div>
+	    </div>
+		<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="js/common.js"></script>
+		<script type="text/javascript" src="js/echarts.js"></script>
+		<script type="text/javascript">
+		$(function(){
+			// 外省和未知
+			$(".map01").hover(function(){
+				$(this).find("img").attr("src","images/map01_hover.png");
+				$(".map01-data").show();
+			},function(){
+				$(this).find("img").attr("src","images/map01.png");
+				$(".map01-data").hide();
+			})
+			$(".map02").hover(function(){
+				$(this).find("img").attr("src","images/map01_hover.png");
+				$(".map02-data").show();
+			},function(){
+				$(this).find("img").attr("src","images/map01.png");
+				$(".map02-data").hide();
+			})
+			// 侧边栏导航
+			$(".banner .one").on("click",function(){
+				$(this).toggleClass("hover");
+				if($(this).next(".two-banner").is(":visible")){
+					$(this).next(".two-banner").slideUp();
+				}else{
+					$(this).next(".two-banner").siblings(".two-banner").slideUp();
+					$(this).siblings(".banner .one").removeClass("hover");
+					$(this).next(".two-banner").slideDown();
+				}
+			})
+
+			// 绘制地图
+			var myChart = echarts.init(document.getElementById('echarts'));
+			myChart.showLoading();
+
+			$.get('js/sichuan.json', function (geoJson) {
+
+			    myChart.hideLoading();
+
+			    echarts.registerMap('sichuan', geoJson);
+
+			    var users=20000,businesses=10000,orders=30000;
+
+			    var data=[
+                    {name: '甘孜藏族自治州', value: 200},
+                    {name: '阿坝藏族羌族自治州', value: 300}
+                ];
+                var data02=[
+                    {name: '甘孜藏族自治州', value: 300},
+                    {name: '阿坝藏族羌族自治州', value: 700}
+                ];
+                var data03=[
+                    {name: '甘孜藏族自治州', value: 400},
+                    {name: '阿坝藏族羌族自治州', value: 800}
+                ];
+                var data04=[
+                    {name: '甘孜藏族自治州', value: 1400},
+                    {name: '阿坝藏族羌族自治州', value: 800}
+                ];
+                var data05=[
+                    {name: '甘孜藏族自治州', value: 2400},
+                    {name: '阿坝藏族羌族自治州', value: 800}
+                ];
+			    myChart.setOption(option = {
+			        title: {
+			            text: '',
+			            subtext: '',
+			            sublink: ''
+			        },
+			        tooltip: {
+			            trigger: 'item',
+			            formatter: function (params) {
+			                var value02,value03,value04,value05;
+			                for(var i=0;i<data.length;i++){
+			                	if(data02[i].name==params.name){
+			                		value02=data02[i].value;
+			                	}
+			                	if(data03[i].name==params.name){
+			                		value03=data03[i].value;
+			                	}
+			                	if(data04[i].name==params.name){
+			                		value04=data04[i].value;
+			                	}
+			                	if(data05[i].name==params.name){
+			                		value05=data05[i].value;
+			                	}
+			                }
+			            	return '<div style="padding:10px;">'+params.name+'<br/><div style="margin-top:10px;">注册用户： '+params.value+'  / '+users+'<br/>注册商户：'+value02+' / '+businesses+'<br/>消费订单（笔）： '+value03+' / '+orders+'<br/><p style="padding:4px 0px;margin-bottom:4px;border-bottom:1px solid #aaa;"></p>消费总金额（元）： <em style="color:#fbf809;"> '+value04+'</em><br/>历史总金额（元）：<em style="color:#fbf809;" >'+value05+'</em></div></div>';
+			            }
+			        },
+			        series: [
+			            {
+			                name: '四川省APP注册量',
+			                type: 'map',
+			                mapType: 'sichuan', // 自定义扩展图表类型
+			                selectedMode: 'multiple',
+			                itemStyle:{
+			                    normal:{label:{show:true}},
+			                    // emphasis:{label:{show:true}}
+			                    emphasis: {                 // 也是选中样式
+				                    borderWidth:2,
+				                    borderColor:'#000',
+				                    areaColor: '#59beed',
+				                    label: {
+				                        show: true,
+				                        textStyle: {
+				                            color: '#000'
+				                        }
+				                    }
+				                }
+			                },
+			                data:data
+			            }
+			        ]
+			    });
+			});
+
+		})
+		</script>
+	</body>
+</html>
