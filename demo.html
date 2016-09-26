@@ -186,129 +186,135 @@
                 "阿坝藏族羌族自治州": "513200",
                 "甘孜藏族自治州": "513300",
                 "凉山彝族自治州": "513400"
-             };
+            };
               
               // 路径配置
-              require.config({
+            require.config({
                 paths: {
-                  echarts: 'echart'
+                    echarts: 'echart'
                 }
-              });
+            });
               
-              // 使用
-              require(
+            // 使用
+            require(
                 [
                   'echarts',
                   'echarts/chart/map' // 使用地图就加载map模块
                 ],
                 function(ec) {
-                  // 基于准备好的dom，初始化echarts图表
-                  var myChart = ec.init(document.getElementById('echarts'));
-              
-                  var curIndx = 0;
-                  var mapType = [];
-                  var mapGeoData = require('echarts/util/mapData/params');
-                  console.log(mapGeoData)
-                  for (var city in cityMap) {
-                    mapType.push(city);
-                    // 自定义扩展图表类型
-                    mapGeoData.params[city] = {
-                      getGeoJson: (function(c) {
-                        var geoJsonName = cityMap[c];
-                        return function(callback) {
-                          $.getJSON('echart/geoJson/china-main-city/' + geoJsonName + '.json', callback);
+                    // 基于准备好的dom，初始化echarts图表
+                    var myChart = ec.init(document.getElementById('echarts'));
+          
+                    var curIndx = 0;
+                    var mapType = [];
+                    var mapGeoData = require('echarts/util/mapData/params');
+                    console.log(mapGeoData)
+                    for (var city in cityMap) {
+                        mapType.push(city);
+                        // 自定义扩展图表类型
+                        mapGeoData.params[city] = {
+                            getGeoJson: (function(c) {
+                                var geoJsonName = cityMap[c];
+                                return function(callback) {
+                                    $.getJSON('echart/geoJson/china-main-city/' + geoJsonName + '.json', callback);
+                                }
+                            })(city)
                         }
-                      })(city)
                     }
-                  }
-              
-                  var ecConfig = require('echarts/config');
+
+                    // 用户总数、商户总数、订单总数
+                    var users=20000,businesses=10000,orders=30000;
+
+                    // 数据依次为用户、商户、订单、消费总金额、历史总金额
+                    var data=[
+                        // 市级数据
+                        {name: '甘孜藏族自治州', users: 200,businesses:300,orders:400,spendMoney:500,historyMoney:600},
+                        {name: '阿坝藏族羌族自治州', users: 300,businesses:400,orders:500,spendMoney:600,historyMoney:700}
+                    ];
                   
-                  //绑定鼠标选中事件
-                  var num = 0;
-                  myChart.on(ecConfig.EVENT.MAP_SELECTED, function(param) {
-                   console.log(param);
-                   var mt = param.target;
-                   var len = mapType.length;
-                   var flag = false;
-                   for (var i = 0; i < len; i++) {
-                     if (mt == mapType[i]) {
-                       flag = true;
-                       mt = mapType[i];         }
-                   }
+                    //绑定鼠标选中事件
+                    var ecConfig = require('echarts/config');
+                    var num = 0;
+                    myChart.on(ecConfig.EVENT.MAP_SELECTED, function(param) {
+                        console.log(param);
+                        var mt = param.target;
+                        var len = mapType.length;
+                        var flag = false;
+                        for (var i = 0; i < len; i++) {
+                            if (mt == mapType[i]) {
+                                flag = true;
+                                mt = mapType[i]; 
+                            }
+                        }
              
-                   console.log(num);
-                   if (!flag || num == 2) {
-                     mt = '四川';
-                     option.title.subtext = '点击查看区县注册量信息';
-                     num = 0;
-                   }else{
-                        option.title.subtext = mt + ' （点击返回）';
-                   }
-                   option.series[0].mapType = mt;
-                   myChart.setOption(option, true);
-                 });
-
-                // 用户总数、商户总数、订单总数
-                var users=20000,businesses=10000,orders=30000;
-
-                // 数据依次为用户、商户、订单、消费总金额、历史总金额
-                var data=[
-                    // 市级数据
-                    {name: '甘孜藏族自治州', users: 200,businesses:300,orders:400,spendMoney:500,historyMoney:600},
-                    {name: '阿坝藏族羌族自治州', users: 300,businesses:400,orders:500,spendMoney:600,historyMoney:700},
-                    // 区县级数据
-                    {name: '石渠县', users: 700,businesses:400,orders:500,spendMoney:600,historyMoney:700}
-                ];
-
-                option = {
-                   title: {
-                     text: '四川省',
-                     // link: 'http://www.pactera.com/',
-                     subtext: '点击查看区县注册量信息'
-                   },
-                   tooltip: {
-                        trigger: 'item',
-                        formatter: function (params) {
-                            var value02,value03,value04,value05;
-                            for(var i=0;i<data.length;i++){
-                                if(data[i].name==params.name){
-                                    value01=data[i].users;
-                                    value02=data[i].businesses;
-                                    value03=data[i].orders;
-                                    value04=data[i].spendMoney;
-                                    value05=data[i].historyMoney;
-                                }
-                            }
-                            return '<div style="padding:10px;">'+params.name+'<br/><div style="margin-top:10px;">注册用户： '+value01+'  / '+users+'<br/>注册商户：'+value02+' / '+businesses+'<br/>消费订单（笔）： '+value03+' / '+orders+'<br/><p style="padding:4px 0px;margin-bottom:4px;border-bottom:1px solid #aaa;"></p>消费总金额（元）： <em style="color:#fbf809;"> '+value04+'</em><br/>历史总金额（元）：<em style="color:#fbf809;" >'+value05+'</em></div></div>';
+                        console.log(num);
+                        if (!flag || num == 2) {
+                            mt = '四川';
+                            option.title.subtext = '点击查看区县注册量信息';
+                            num = 0;
+                            $(".map01,.map02").show();
+                        }else{
+                            option.title.subtext = mt + ' （点击地图返回）';
+                            $(".map01,.map02").hide();
                         }
-                    },
-                   series: [{
-                     name: '四川省APP注册量',
-                     type: 'map',
-                     mapType: '四川',
-                     selectedMode: 'multiple',
-                     itemStyle:{
-                        normal:{label:{show:true}},
-                        emphasis: {                 // 也是选中样式
-                            borderWidth:1,
-                            borderColor:'#59beed',
-                            color: '#59beed',
-                            label: {
-                                show: true,
-                                textStyle: {
-                                    color: '#000'
+                        option.series[0].mapType = mt;
+                        myChart.setOption(option, true);
+                        // 根据市级参数mt来加载区县级数据
+                        var data02=[
+                            // 区县级数据
+                            {name: '石渠县', users: 700,businesses:400,orders:500,spendMoney:600,historyMoney:700},
+                            {name: '阿坝县', users: 700,businesses:400,orders:500,spendMoney:600,historyMoney:700}
+                        ];
+                        data=data.concat(data02);
+                    });
+
+                    option = {
+                        title: {
+                            text: '四川省',
+                            subtext: '点击查看区县注册量信息'
+                        },
+                        tooltip: {
+                            trigger: 'item',
+                            formatter: function (params) {
+                                var value02,value03,value04,value05;
+                                for(var i=0;i<data.length;i++){
+                                    if(data[i].name==params.name){
+                                        value01=data[i].users;
+                                        value02=data[i].businesses;
+                                        value03=data[i].orders;
+                                        value04=data[i].spendMoney;
+                                        value05=data[i].historyMoney;
+                                    }
                                 }
+                                return '<div style="padding:10px;">'+params.name+'<br/><div style="margin-top:10px;">注册用户： '+value01+'  / '+users+'<br/>注册商户：'+value02+' / '+businesses+'<br/>消费订单（笔）： '+value03+' / '+orders+'<br/><p style="padding:4px 0px;margin-bottom:4px;border-bottom:1px solid #aaa;"></p>消费总金额（元）： <em style="color:#fbf809;"> '+value04+'</em><br/>历史总金额（元）：<em style="color:#fbf809;" >'+value05+'</em></div></div>';
                             }
-                        }
-                     },
-                     data: data
-                   }]
-                 };
-                 // 为echarts对象加载数据 
-                 myChart.setOption(option);
-               }
-             );
+                        },
+                        series: [{
+                            name: '四川省APP注册量',
+                            type: 'map',
+                            mapType: '四川',
+                            selectedMode: 'multiple',
+                            itemStyle:{
+                                normal:{label:{show:true}},
+                                emphasis: {                 // 也是选中样式
+                                    borderWidth:1,
+                                    borderColor:'#59beed',
+                                    color: '#59beed',
+                                    label: {
+                                        show: true,
+                                        textStyle: {
+                                            color: '#000'
+                                        }
+                                    }
+                                }
+                            },
+                            data: data
+                        }]
+                    };
+                    // 为echarts对象加载数据 
+                    myChart.setOption(option);
+                }
+            );
 
         })
         </script>
