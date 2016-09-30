@@ -87,13 +87,14 @@
                         <a href="javascript:void(0);" class="red-bg">退出</a>
                     </div>
                 </div>
-                <div id="main" style="position:relative;">
+                <div id="main" style="position:relative;background:#fff;">
                     <div class="title">
                         <span></span>
                         <em>四川省APP注册量</em>
                     </div>
                     <!-- 地图 -->
                     <div id="echarts" style="margin-left:200px;"></div>
+                    <div id="loading" style="width: 80%;height: 700px;margin: 0 auto;display:none;background:#fff;opacity:0.5;"></div>
                     <!-- 其他 -->
                     <div class="map01" style="position:absolute;left:40px;top:120px;z-index:999;">
                         <img src="images/map01.png" title="" alt="" width="231" height="255"/>
@@ -204,7 +205,7 @@
                 function(ec) {
                     // 基于准备好的dom，初始化echarts图表
                     var myChart = ec.init(document.getElementById('echarts'));
-          
+
                     var curIndx = 0;
                     var mapType = [];
                     var mapGeoData = require('echarts/util/mapData/params');
@@ -254,24 +255,54 @@
                             num = 0;
                             $(".map01,.map02").show();
                         }else{
+                            $(".map01,.map02,#echarts").hide();
+                            $("#loading").show();
+                            var zrender = require('zrender');
+                            var zr = zrender.init(document.getElementById('loading'));
+                            var CircleShape = require('zrender/shape/Circle');
+                            zr.render();
+                            require([
+                                'zrender/loadingEffect/Bar',
+                                'zrender/loadingEffect/Bubble',
+                                'zrender/loadingEffect/DynamicLine',
+                                'zrender/loadingEffect/Ring',
+                                'zrender/loadingEffect/Spin',
+                                'zrender/loadingEffect/Whirling'
+                                ],
+                                function(BarEffect,BubbleEffect,DynamicLineEffect,RingEffect,Spineffect,WhirlingEffect){
+                                    var effectList = new WhirlingEffect();
+                                    zr.showLoading(effectList);
+                                }
+                            )
+
                             option.title.subtext = mt + ' （点击地图返回）';
-                            $(".map01,.map02").hide();
+                            // 根据市级参数mt来加载区县级数据
+                            var data02=[
+                                // 区县级数据
+                                {name: '石渠县', users: 700,businesses:400,orders:500,spendMoney:600,historyMoney:700},
+                                {name: '阿坝县', users: 700,businesses:400,orders:500,spendMoney:600,historyMoney:700}
+                            ];
+                            data=data.concat(data02);
+
+                            setTimeout(function(){
+                                $("#loading").hide();
+                                $("#echarts").show();
+                            },2000)
+
                         }
                         option.series[0].mapType = mt;
                         myChart.setOption(option, true);
-                        // 根据市级参数mt来加载区县级数据
-                        var data02=[
-                            // 区县级数据
-                            {name: '石渠县', users: 700,businesses:400,orders:500,spendMoney:600,historyMoney:700},
-                            {name: '阿坝县', users: 700,businesses:400,orders:500,spendMoney:600,historyMoney:700}
-                        ];
-                        data=data.concat(data02);
                     });
 
                     option = {
                         title: {
                             text: '四川省',
-                            subtext: '点击查看区县注册量信息'
+                            subtext: '点击查看区县注册量信息',
+                            x: 'center',
+                            padding:0,
+                            subtextStyle:{
+                                color:"#000"
+                            }
                         },
                         tooltip: {
                             trigger: 'item',
